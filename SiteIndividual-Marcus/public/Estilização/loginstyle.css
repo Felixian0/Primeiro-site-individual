@@ -31,7 +31,7 @@ body {
 
 .container {
     width: 80%;
-    margin: 0px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: row;
@@ -65,3 +65,17 @@ body {
     text-decoration: none;
     color: rgba(190,6,37,255);
 }
+
+.banner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-image {
+    height: 100%;
+    width: 100%;
+}
+

@@ -17,9 +17,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Barlow';
-    background-size: cover;
-    background-image: url(../img/491471.jpg);
-    background-repeat: no-repeat;
 }
 
 .header {
@@ -64,6 +61,19 @@ body {
 .navbar a {
     text-decoration: none;
     color: rgba(45,53,102,255);
+}
+
+.banner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-image {
+    height: 100%;
+    width: 100%;
 }
 
 .secao1 {

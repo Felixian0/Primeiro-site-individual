@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vem pro Racha!</title>
+    <title>Vem pro Racha! | Cadastro</title>
 
     <link rel="stylesheet" href="../Estilização/cadastrostyle.css">
 
@@ -12,12 +13,11 @@
 
 <body>
     <!-- Configuração do Header-->
-
     <div class="header">
         <div class="container">
             <div class="logo_header">
                 <a href="./TelaInicio.html">
-                    <img src="../img/logoasinha.png">
+                    <img src="../img/pngwing.com.png">
                 </a>
             </div>
             <ul class="navbar">
@@ -31,17 +31,35 @@
         </div>
     </div>
 
-    <!-- Configuarção Banner-->
+    <!-- Configuarção Main e Formulário-->
 
-    <!-- Configuarção Footer-->
+    <div class="banner">
+        <div class="banner-image">
+            <div class="container tamanho-conteudo">
+                <div class="card-medio">
+                    <div class="formulario">Próximo!
 
-    <div class="footer">
-        <div class="container">
-            <h4>
-                INSIRA AQUI RS
-            </h4>
+                        <span class="tipo_campo">Nome:</span>
+                        <input id="nome_input" type="text" placeholder="Seu nome">
+
+                        <span class="tipo_campo">E-mail:</span>
+                        <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+
+                        <span class="tipo_campo">Senha:</span>
+                        <input id="senha_input" type="password" placeholder="******">
+
+                        <span class="tipo_campo">Confirmação da Senha:</span>
+                        <input id="confirmacao_senha_input" type="password" placeholder="******">
+
+                        <button class="btn" onclick="cadastrar()">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Configuarção Footer-->
+
+    <footer class="site-footer">footer</footer>
 </body>
 
 </html>
