@@ -17,16 +17,18 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Barlow';
+    background-color: rgba(229,229,229,255)
 }
 
 .header {
+    width: 100%;
     background-color: rgba(229,229,229,255);
-    border-bottom: 2px solid rgba(190,6,37,255);
+    border-bottom: 2px solid rgba(237,33,36,255);
     align-content: center;
     display: flex;
 }
 
-.container {
+.header .container {
     width: 80%;
     margin: auto;
     display: flex;
@@ -45,6 +47,18 @@ body {
     height: auto;
 }
 
+.titulo {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: rgba(237,33,36,255);
+
+}
+
 .navbar {
     width: 20%;
     display: flex;
@@ -60,24 +74,29 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: rgba(45,53,102,255);
+    color: rgba(237,33,36,255);
 }
 
+/* EDITAR A FOTO*/
 .banner {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
 }
 
 .banner-image {
     height: 100%;
     width: 100%;
+    background-image: url(../img/wp10465178-basketball-pc-wallpapers.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .secao1 {
-    width: 100vw;
+    width: 100%;
     height: 550px;
     display: flex;
     flex-direction: row;
@@ -91,7 +110,7 @@ body {
     align-items: center;
     width: 50%;
     text-transform: bold;
-    color: rgba(45,53,102,255);
+    color: rgba(229,229,229,255);
 }
 
 .introducao1 p {
@@ -100,9 +119,9 @@ body {
     letter-spacing: 0.5px;
     width: 50%;
     padding: 5%;
-    border: 2px solid rgba(190,6,37,255);
+    border: 2px solid rgba(237,33,36,255);
     border-radius: 5px;
-    background-color: rgba(229,229,229,255);
+    background-color: black;
 }
 
 .introducao2 {
@@ -111,7 +130,7 @@ body {
     align-items: center;
     width: 50%;
     text-transform: bold;
-    color: rgba(45,53,102,255);
+    color: rgba(229,229,229,255);
 }
 
 .introducao2 p {
@@ -120,9 +139,9 @@ body {
     letter-spacing: 0.5px;
     width: 50%;
     padding: 5%;
-    border: 2px solid rgba(190,6,37,255);
+    border: 2px solid rgba(237,33,36,255);
     border-radius: 5px;
-    background-color: rgba(229,229,229,255);
+    background-color: black;
 }
 
 .footer {

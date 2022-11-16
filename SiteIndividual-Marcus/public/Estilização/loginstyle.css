@@ -22,9 +22,11 @@ body {
     background-repeat: no-repeat;
 }
 
+/* Header */
 .header {
+    width: 100%;
     background-color: rgba(229,229,229,255);
-    border-bottom: 2px solid rgba(190,6,37,255);
+    border-bottom: 2px solid rgba(237,33,36,255);
     align-content: center;
     display: flex;
 }
@@ -48,6 +50,18 @@ body {
     height: auto;
 }
 
+.titulo {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: rgba(237,33,36,255);
+
+}
+
 .navbar {
     width: 20%;
     display: flex;
@@ -63,19 +77,53 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: rgba(190,6,37,255);
+    color: rgba(237,33,36,255);
 }
 
+/* EDITAR A FOTO*/
 .banner {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
 }
 
 .banner-image {
     height: 100%;
     width: 100%;
+    background-image: url(../img/wallpaperlogin.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
+.banner .container {
+    height: 500px;
+    font-size: 36px;
+}
+
+.tamanho-conteudo {
+    height: fit-content !important;
+}
+
+.formulario {
+    color: rgba(190, 6, 37, 255);
+    margin-top: 50%;
+    padding: 50px;
+    align-items: center;
+    background-color: rgba(229, 229, 229, 255);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border-bottom: 7px solid rgba(237,33,36,255);
+    border-top: 1px solid rgba(237,33,36,0.5);
+    border-left: 7px solid rgba(237,33,36,255);
+    border-right: 1px solid rgba(237,33,36,0.5);
+}
+
+.formulario .tipo_campo {
+    font-size: 20px;
+    font-weight: 600 !important;
+    color: rgba(190, 6, 37, 255);
+}

@@ -50,3 +50,6 @@ body {
     text-decoration: none;
     color: rgba(45,53,102,255);
 }
+
+
+cinza claro rgba(229,229,229,255);
