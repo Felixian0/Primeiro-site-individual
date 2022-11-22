@@ -101,11 +101,6 @@ h1 {
     border-bottom: 2px solid rgba(229, 229, 229, 255);
 }
 
-.banner .container {
-    height: 500px;
-    font-size: 36px;
-}
-
 .tamanho-conteudo {
     height: fit-content !important;
 }
@@ -124,7 +119,7 @@ h1 {
     background-clip: text;
     color: transparent;
     display: flex;
-    margin-top: 15%;
+    margin-top: 5%;
     margin-right: 60%;
     margin-left: 5%;
 }
@@ -165,7 +160,7 @@ h1 {
     align-items: center;
 }
 
-.multicolortext2 {
+.introducao1 .text {
     background-image: linear-gradient(to left, rgba(168, 167, 172, 255), rgba(170, 170, 178, 255), rgba(195, 195, 203, 255), rgba(226, 228, 241, 255), rgba(195, 195, 203, 255), rgba(170, 170, 178, 255), rgba(168, 167, 172, 255));
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -206,13 +201,93 @@ h1 {
     border-right: 2px solid rgba(229, 229, 229, 255);
 }
 
-.multicolortext3 {
+.introducao2 .text {
     background-image: linear-gradient(to left, rgba(168, 167, 172, 255), rgba(170, 170, 178, 255), rgba(195, 195, 203, 255), rgba(226, 228, 241, 255), rgba(195, 195, 203, 255), rgba(170, 170, 178, 255), rgba(168, 167, 172, 255));
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
     display: flex;
+}
+
+.secao3 {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 6rem;
+}
+
+.container1 {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #fff;
+}
+
+.imagemBLM {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: 50%;
+}
+
+.imagemBLM img {
+    width: 100%;
+    border-radius: 10px;
+    border-bottom: 2px solid rgba(229, 229, 229, 255);
+    border-top: 2px solid rgba(229, 229, 229, 255);
+    border-left: 2px solid rgba(229, 229, 229, 255);
+    border-right: 2px solid rgba(229, 229, 229, 255);
+}
+
+.introducao3 {
+    height: 30%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.container2 {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #fff;
+}
+
+.imagemAmizade {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: 50%;
+}
+
+.imagemAmizade img {
+    width: 100%;
+    border-radius: 10px;
+    border-bottom: 2px solid rgba(229, 229, 229, 255);
+    border-top: 2px solid rgba(229, 229, 229, 255);
+    border-left: 2px solid rgba(229, 229, 229, 255);
+    border-right: 2px solid rgba(229, 229, 229, 255);
+}
+
+.introducao4 {  
+    height: 30%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 1.3rem;
 }
 
 .footer {
