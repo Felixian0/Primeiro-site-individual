@@ -12,8 +12,8 @@
     <script src="./js/funcoes.js"></script>
 
 
-    <link rel="icon" href="../public/assets/logoOficial.png">
-    <link rel="stylesheet" href="../public/css/cadastrostyle.css">
+    <link rel="icon" href="./assets/logoOficial.png">
+    <link rel="stylesheet" href="./css/cadastrostyle.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -26,18 +26,18 @@
     <div class="header">
         <div class="container">
             <div class="logo">
-                <img src="../public/assets/logoOficial.png">
+                <img src="./assets/logoOficial.png">
                 <h1>Vem pro Racha!</h1>
             </div>
             <ul class="navbar">
                 <li>
-                    <a href="TelaInicio.html">Inicio</a>
+                    <a href="index.html">Inicio</a>
                 </li>
                 <li>
-                    <a href="TelaLogin.html">Entrar</a>
+                    <a href="login.html">Entrar</a>
                 </li>
                 <li>
-                    <a href="TelaCadastro.html">Cadastre-se</a>
+                    <a href="cadastro.html">Cadastre-se</a>
                 </li>
             </ul>
         </div>
@@ -67,6 +67,41 @@
                         <span class="tipo_campo">E-mail:</span>
                         <input id="email_input" type="text" placeholder="meuemail@provedor.com">
 
+                        <span class="tipo_campo">Confirmação da Senha:</span>
+                        <select id="select_time">
+                            <option value="0">Selecione...</option>
+                            <option value="atlanta_Hawks">Atlanta Hawks</option>
+                            <option value="boston_Celtics">Boston Celtics</option>
+                            <option value="brooklyn_Nets">Brooklyn Nets</option>
+                            <option value="charlotte_Hornets">Charlotte Hornets</option>
+                            <option value="chicago_Bulls">Chicago Bulls</option>
+                            <option value="cleveland_Cavaliers">Cleveland Cavaliers</option>
+                            <option value="dallas_Mavericks">Dallas Mavericks</option>
+                            <option value="denver_Nuggets">Denver Nuggets</option>
+                            <option value="detroit_Pinstons">Detroit Pinstons</option>
+                            <option value="golden_State_Warriors">Golden State Warriors</option>
+                            <option value="houston_Rockets">Houston Rockets</option>
+                            <option value="indiana_Pacers">Indiana Pacers</option>
+                            <option value="los_angeles_Clippers">Los angeles Clippers</option>
+                            <option value="los_Angeles_Lakers">Los Angeles Lakers</option>
+                            <option value="memphis_Grizzlies">Memphis Grizzlies</option>
+                            <option value="miami_Heat">Miami Heat</option>
+                            <option value="milwaukee_Bucks">Milwaukee Bucks</option>
+                            <option value="minnesota_Timberwolve">Minnesota Timberwolves</option>
+                            <option value="new_Orleans_Pelicans">New Orleans Pelicans</option>
+                            <option value="new York_Knicks">New York Knicks</option>
+                            <option value="oklahoma_City_Thunder">Oklahoma City Thunder</option>
+                            <option value="orlando_Magic">Orlando Magic</option>
+                            <option value="philadelphia_76ers">Philadelphia 76ers</option>
+                            <option value="phoenix_Suns">Phoenix Suns</option>
+                            <option value="portland_Trail_Blazers">Portland Trail Blazers</option>
+                            <option value="pacramento_Kings">Sacramento Kings</option>
+                            <option value="san_Antonio_Spurs">San Antonio Spurs</option>
+                            <option value="toronto_Raptors">Toronto Raptors</option>
+                            <option value="utah_Jazz">Utah Jazz</option>
+                            <option value="washington_Wizards">Washington Wizards</option>
+                        </select>
+
                         <span class="tipo_campo">Senha:</span>
                         <input id="senha_input" type="password" placeholder="******">
 
@@ -90,7 +125,7 @@
     <div class="footer">
         <div class="footer-section1">
             <div class="logo">
-                <img src="../public/assets/logoOficial.png">
+                <img src="./assets/logoOficial.png">
                 <h4>Vem Pro Racha!</h4>
             </div>
             <br>
@@ -107,15 +142,16 @@
                 <div class="text">Redes sociais:
                 </div>
                 <div class="footer-images">
-                    <img src="../public/assets/Discord.png">
-                    <img src="../public/assets/GitHub.png">
-                    <img src="../public/assets/Instagram.png">
-                    <img src="../public/assets/LinkedIn.png">
+                    <img src="./assets/Discord.png">
+                    <img src="./assets/GitHub.png">
+                    <img src="./assets/Instagram.png">
+                    <img src="./assets/LinkedIn.png">
                 </div>
             </div>
         </div>
     </div>
-    <!--footer fim-->
+</body>
+<!--footer fim-->
 
 
 </body>
@@ -130,10 +166,12 @@
         // Agora vá para o método fetch logo abaixo
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
+        var timeFav = select_time.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (nomeVar == "" || emailVar == "" || timeFav == 0 || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -155,7 +193,9 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
+                timeServer: timeFav,
                 senhaServer: senhaVar
+                
             })
         }).then(function (resposta) {
 
