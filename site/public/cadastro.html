@@ -6,11 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Cadastro</title>
-
+    <title>Vem pro racha!</title>
 
     <script src="./js/funcoes.js"></script>
-
 
     <link rel="icon" href="./assets/logoOficial.png">
     <link rel="stylesheet" href="./css/cadastrostyle.css">
@@ -65,7 +63,7 @@
                         <input id="nome_input" type="text" placeholder="Seu nome">
 
                         <span class="tipo_campo">E-mail:</span>
-                        <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+                        <input id="email_input" type="email" placeholder="meuemail@provedor.com">
 
                         <span class="tipo_campo">Confirmação da Senha:</span>
                         <select id="select_time">
@@ -173,11 +171,28 @@
 
         if (nomeVar == "" || emailVar == "" || timeFav == 0 || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Existem campos não preenchidos";
 
             finalizarAguardar();
             return false;
         }
+
+        else if (senhaVar.length < 8) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Senha muito curta";
+
+            finalizarAguardar();
+            return false;
+        }
+
+        else if (confirmacaoSenhaVar != senhaVar) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "A senha e senha confirmada não são idênticas.";
+
+            finalizarAguardar();
+            return false;
+        }
+
         else {
             setInterval(sumirMensagem, 5000)
         }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vem pro racha!</title>
+    <link rel="icon" href="../assets/logoOficial.png">
+    <link rel="stylesheet" href="../css/usuario.css">
+    <script src="../js/funcoes.js"></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="user-header">
+            <h1>Salve, usuário</h1>
+            <div class="secao1">
+                <h3>Quadras</h3>
+                <a href="./quadras.html">
+                    <div class="btn-nav1">
+                    </div>
+                </a>
+            </div>
+            <div class="secao2">
+
+                <h3>Meu top 5</h3>
+                <a href="./votacao.html">
+                    <div class="btn-nav2">
+                    </div>
+                </a>
+            </div>
+            <div class="secao3">
+                <h3>Ranking da comunidade</h3>
+                <a href="./ranking.html">
+                    <div class="btn-nav3">
+                    </div>
+                </a>
+            </div>
+            <div class="secao4">
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h2>Sair</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-secao">
+            <div class="container">
+            <h4>Insira uma região de São Paulo para receber recomendações de quadras:</h4>
+            <select id="select-regiao">
+                <option value="0">Selecione...</option>
+                <option value="reg-Norte">Norte</option>
+                <option value="reg-Sul">Sul</option>
+                <option value="reg-Leste">Leste</option>
+                <option value="reg-Oeste">Oeste</option>
+            </select>
+            <button onclick="exibir()">Verificar</button>
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function exibir(){
+        
+    }
+</script>
