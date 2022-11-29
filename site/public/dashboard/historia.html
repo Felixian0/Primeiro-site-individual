@@ -54,19 +54,6 @@
     </div>
 
     <div class="main" id="main_nao_tem_historia">
-        <div class=" main-secao">
-        <div class="container">
-            <form id="postagem" method="post">
-                <!--id form_postagem-->
-                <label>
-                    <textarea name="comentario" id="textoComentario" maxlength="400"
-                        placeholder="Insira aqui seu comentário!"></textarea>
-                    <!--name descricao id textarea_descricao-->
-                </label>
-                <br>
-                <button onclick="publicar()">Enviar</button>
-            </form>
-        </div>
     </div>
     </div>
 
@@ -94,12 +81,11 @@
 </html>
 <script>
     function publicar() {
-        container.style.display = "flex"
         // var texto = text.value;
         var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
-            descricao: postagem.textoComentario.value //VERIFICAR SE ESTA CORRETO
+            descricao: textoComentario.value //VERIFICAR SE ESTA CORRETO
         }
 
         fetch(`/usuarios/publicar/${idUsuario}`, {
@@ -135,20 +121,7 @@
         fetch(`/usuarios/exibir/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
-                    throw "Nenhum resultado encontrado!!";
-                }
-
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    var feed = document.getElementsByClassName("container");
-
-                    var publicacao = resposta;
-                    feed.innerHTML = publicacao.descricao;
-                    if (idUsuario == publicacao.fkUsuario) {
-                        alert('Ja tem historia')
-                    } else {
-                        main_nao_tem_historia.innerHTML = `
+                    main_nao_tem_historia.innerHTML = `
                         <div class=" main-secao">
         <div class="container">
             <form id="postagem" method="post">
@@ -164,7 +137,29 @@
         </div>
     </div>
                         `
-                    }
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementsByClassName("container");
+
+                    var publicacao = resposta[0];
+                    feed.innerHTML = publicacao.descricao;
+                    if (idUsuario == publicacao.fkUsuario) {
+                        main_nao_tem_historia.innerHTML = `
+                        <div class=" main-secao">
+        <div class="container">
+            <form id="postagem" method="post">
+                <!--id form_postagem-->
+                <br>
+                <button onclick="publicar()">Enviar</button>
+            </form>
+        </div>
+    </div>
+                        `
+
+                    } 
 
                 });
             } else {
