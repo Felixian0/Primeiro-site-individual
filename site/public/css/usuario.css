@@ -39,8 +39,8 @@ body {
 
 .secao1 {
     display: flex;
-    height: 18%;
-    width: 51%;
+    height: 17%;
+    width: 50%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -86,8 +86,8 @@ body {
 
 .secao3 {
     display: flex;
-    height: 22%;
-    width: 52%;
+    height: 20%;
+    width: 45%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -110,15 +110,40 @@ body {
 
 .secao4 {
     display: flex;
-    height: 15%;
+    height: 20%;
+    width: 47%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-nav4 {
+    width: 82%;
+    color: white;
+    background-image: url(../assets/imgs/1973989.png);
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    background-size: cover;
+    background-color: rgba(41, 171, 226, 255);
+    text-align: center;
+    /* padding: 2% 5%; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.secao5 {
+    display: flex;
+    height: 10%;
     width: 50%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
+
 .btn-logout {
-    height: 40%;
+    height: 50%;
     display: flex;
     align-items: center;
     width: 60%;
@@ -146,6 +171,7 @@ h3 {
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
     justify-content: center;
+    font-size: 1rem;
 }
 
 .main {
@@ -164,25 +190,26 @@ h3 {
 .main-secao {
     display: flex;
     height: 70%;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center
 }
 
 .container {
     display: flex;
-    width: 65%;
+    width: 35%;
     background-color: rgba(49, 49, 51, 0.6);
     align-items: center;
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
-    border-top-left-radius: 80px;
-    border-bottom-right-radius: 80px;
+    border-top-left-radius: 20%;
+    border-bottom-right-radius: 20%;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     border-left: 6px solid black;
     border-right: 6px solid black;
+    padding: 1.6%;
 }
 
 button {
@@ -206,8 +233,159 @@ option {
 h4 {
     color: rgba(253, 202, 64, 255);
     display: flex;
+    height: 10%;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.secao {
+    height: 25%;
+    width: 80%;
+    background-color: rgba(41, 171, 226, 255);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+}
+
+.podio1 {
+    height: 100%;
+    width: 80%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.qtd_votos1 {
+    height: 50%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.podio2 {
+    height: 100%;
+    width: 80%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.qtd_votos2 {
+    height: 50%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.podio3 {
+    height: 100%;
+    width: 80%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.qtd_votos3 {
+    height: 50%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    color: rgba(253, 202, 64, 255);
+    display: flex;
     height: 30%;
     align-items: center;
     text-align: center;
     font-size: 1.6rem;
+}
+
+.numero {
+    width: 40%;
+    background-color: white;
+    font-size: 1.6rem;
+    display: flex;
+    height: 55%;
+    align-items: center;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h5 {
+    width: 35%;
+    color: rgba(41, 171, 226, 255);
+}
+
+#container {
+    display: none;
+    width: 35%;
+    background-color: rgba(49, 49, 51, 0.6);
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 6px solid black;
+    border-right: 6px solid black;
+    padding: 1.5%;
+}
+
+img {
+    width: 85%;
+    height: 50%;
+    border-radius: 20px;
+}
+
+h6 {
+    height: 30%;
+    color: rgba(253, 202, 64, 255);
+    font-size: 1.2rem;
+}
+
+#text {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-top-left-radius: 1%;
+    border-bottom-right-radius: 1%;
+}
+
+button {
+    height: 8%;
+    display: flex;
+    align-items: center;
+    width: 25%;
+    justify-content: center;
+    background-color: rgba(41, 171, 226, 255);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#postagem {
+    height: 50%;
+    width: 80%;
+}
+
+#textoHistoria {
+    height: 100%;
+    width: 100%;
+}
+
+.minhaHistoria {
+    height: 80%;
+    width: 80%;
+    background-color: red;
 }

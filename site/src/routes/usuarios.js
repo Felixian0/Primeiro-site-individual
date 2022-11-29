@@ -16,6 +16,18 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
+router.post("/publicar/:idUsuario", function (req, res) {
+    usuarioController.publicar(req, res);
+})
+
+router.post("/votar/:idUsuario", function (req, res) {
+    usuarioController.cadastrarVoto(req, res);
+})
+
+router.get("/exibir", function (req, res) {
+    usuarioController.exibir(req, res);
+});
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });

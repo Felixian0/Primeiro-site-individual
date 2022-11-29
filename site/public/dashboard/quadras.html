@@ -39,6 +39,13 @@
                 </a>
             </div>
             <div class="secao4">
+                <h3>Minha história</h3>
+                <a href="./historia.html">
+                    <div class="btn-nav4">
+                    </div>
+                </a>
+            </div>
+            <div class="secao5">
                 <div class="btn-logout" onclick="limparSessao()">
                     <h2>Sair</h2>
                 </div>
@@ -48,16 +55,20 @@
     <div class="main">
         <div class="main-secao">
             <div class="container">
-            <h4>Insira uma região de São Paulo para receber recomendações de quadras:</h4>
-            <select id="select-regiao">
-                <option value="0">Selecione...</option>
-                <option value="reg-Norte">Norte</option>
-                <option value="reg-Sul">Sul</option>
-                <option value="reg-Leste">Leste</option>
-                <option value="reg-Oeste">Oeste</option>
-            </select>
-            <button onclick="exibir()">Verificar</button>
-        </div>
+                <h4>Escolha uma entre nossas recomendações de quadras, para ter acesso a informações sobre:</h4>
+                <select id="select_qtd_quadras">
+                    <option value="0">Selecione...</option>
+                    <option value="1">Parque Ibirapuera</option>
+                    <option value="2">Praça Rotari</option>
+                    <option value="3">Parque Villa-Lobos</option>
+                    <option value="4">Parque da Juventude</option>
+                    <option value="5">Parque Jardim Felicidade</option>
+                    <option value="6">Parque Zilda Natel</option>
+                </select>
+                <button onclick="exibir()">Verificar</button>
+            </div>
+            <div id="container">
+            </div>
         </div>
     </div>
 </body>
@@ -65,7 +76,20 @@
 </html>
 
 <script>
-    function exibir(){
-        
+    function exibir() {
+        var quadra = select_qtd_quadras.value;
+        const img_quadra = [`<img src= '../assets/imgs/ibira_basquete_nike.jpg'>`, `<img src= '../assets/imgs/rotary.jpg'>`, `<img src= '../assets/imgs/parque-villa-lobos.jpg'>`, `<img src= '../assets/imgs/Juventude-TomDib-17.jpg'>`, `<img src= '../assets/imgs/jardimfelicidade.jpg'>`, `<img src= '../assets/imgs/DSC01495.jpg'>`];
+
+        const txt_quadra = [`<h6>Localizadas próximo ao Portão 5 do parque, na Av, IV Centenário, as quatro quadras são sempre muito bem disputadas – e não é à toa, o parque recebe cerca de 120 mil visitas aos finais de semana. Mas não desiste não! As quadras e a entrada para acesso ficam abertas todos os dias, a partir das cinco da manhã até meia noite.<h6>`, `<h6>Localizada na Região Central, na Rua Major Sertório – Vila Buarque, o parque é calmo, por possuir a Biblioteca Monteiro Lobato – durante a semana há sempre crianças circulando no local. Não costuma lotar, é aberto todos os dias das 8h às 18 horas.<h6>`, `<h6>Localizado na Zona Norte da capital – mais especificamente na Rua Laudelino Vieira de Campos, 265 – a quadra oferece aulas todos os domingos, das 15 às 16 horas, para ensinar o esporte para alunos de todas as idades. Seu horário de funcionamento diariamente é das 7h às 18 horas.<h6>`,`<h6>Localizado na região Oeste, na Av. Professor Fonseca Rodrigues, 2001 – Alto dos Pinheiros, o parque possui uma quadra de basquete tradicional e quatro quadras menores, com apenas uma cesta (ideal para jogos em trio). Seu horário de funcionamento é diário das 5h30 às 20 horas.<h6>`,`<h6>Localizado também na Zona Norte, ao lado da estação de metrô Carandiru (Linha 1 – Azul), e por ter uma ETEC e a Biblioteca de São Paulo há sempre muito movimento no parque durante a semana. As três quadras funcionam de segunda a sábado das seis da manhã até meia noite e domingo das 6h às 22 horas.<h6>`,`<h6>Localizado na Região Centro-Oeste, mais especificamente na Av. Dr. Arnaldo, 120 – Sumaré, é mais conhecido por ter uma ótima pista de skate, sendo um dos lugares favoritos por quem pratica o esporte, foi até construído com ajuda da Confederação Brasileira de Skate. Seu horário de funcionamento é diário, das 9h às 21 horas.<h6>`];
+
+            if (quadra == 0) {
+                alert(`Por favor selecione um numéro.`)
+            }
+
+        for (var i = 0; i < quadra; i++) {
+            container.style.display = "flex"
+            container.innerHTML = `${img_quadra[i]}<br>${txt_quadra[i]}`
+        };
+
     }
 </script>

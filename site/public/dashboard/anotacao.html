@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="main-secao">
+            <div class="container">
+                <form id="postagem" method="post">
+                    <!--id form_postagem-->
+                    <textarea name="historia" id="textoHistoria" maxlength="400"
+                        placeholder="Insira aqui seu comentário!"></textarea>
+                    <!--name descricao id textarea_descricao-->
+                </form>
+                <button onclick="publicar()">
+                    <h4>Enviar</h4>
+                </button>
+            </div>
+            <div id="container">
+                <div class="minhaHistoria">
+                    <h2 id="feed"></h2>
+                </div>
+                <button onclick="exibir()">Exibir</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
+<script>
+    function publicar() {
+        container.style.display = "flex"
+        // var texto = text.value;
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            descricao: postagem.historia.value //VERIFICAR SE ESTA CORRETO
+        }
+
+        fetch(`/usuarios/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                // window.location = "/dashboard/mural.html";
+
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+
+    }
+
+    function exibir() {
+        //aguardar();
+        fetch("/usuarios/exibir").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("container_text");
+
+                    var publicacao = resposta;
+                    feed.innerHTML = publicacao.descricao;
+
+</body>
+</html>

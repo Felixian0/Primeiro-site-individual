@@ -39,6 +39,13 @@
                 </a>
             </div>
             <div class="secao4">
+                <h3>Minha história</h3>
+                <a href="./historia.html">
+                    <div class="btn-nav4">
+                    </div>
+                </a>
+            </div>
+            <div class="secao5">
                 <div class="btn-logout" onclick="limparSessao()">
                     <h2>Sair</h2>
                 </div>
@@ -49,50 +56,109 @@
         <div class="main-secao">
             <div class="container">
                 <h4>Vote no seu top 5 jogadores favoritos:</h4>
-                <select id="select-jogador">
+                <select id="select_jogador1">
                     <option value="0">Armador</option>
-                    <option value="chris-Paul">Chris Paul</option>
-                    <option value="kirye-Irving">Kirye Irving</option>
-                    <option value="magic-Johnson">Magic Johnson</option>
-                    <option value="russell-Westbrook">Russel Westbrook</option>
-                    <option value="steph-Curry">Steph Curry</option>
+                    <option value="1">Chris Paul</option>
+                    <option value="2">Kirye Irving</option>
+                    <option value="3">Magic Johnson</option>
+                    <option value="4">Russel Westbrook</option>
+                    <option value="5">Steph Curry</option>
                 </select>
-                <select id="select-jogador">
+                <select id="select_jogador2">
                     <option value="0">Ala Armador</option>
-                    <option value="allen-Iverson">Allen Iverson</option>
-                    <option value="dwyane-Wade">Dwyane Wade</option>
-                    <option value="james-Harden">James Harden</option>
-                    <option value="kobe-Bryant">Kobe Bryant</option>
-                    <option value="michael-Jordan">Michael Jordan</option>
+                    <option value="6">Allen Iverson</option>
+                    <option value="7">Dwyane Wade</option>
+                    <option value="8">James Harden</option>
+                    <option value="9">Kobe Bryant</option>
+                    <option value="10">Michael Jordan</option>
                 </select>
-                <select id="select-jogador">
+                <select id="select_jogador3">
                     <option value="0">Ala</option>
-                    <option value="kevin-Durant">Kevin Durant</option>
-                    <option value="kawhi-Leonard">Kawhi Leonard</option>
-                    <option value="larry-Bird">Larry Bird</option>
-                    <option value="lebron-James">Lebron James</option>
-                    <option value="scottie-Pipen">Scottie Pipen</option>
+                    <option value="11">Kevin Durant</option>
+                    <option value="12">Kawhi Leonard</option>
+                    <option value="13">Larry Bird</option>
+                    <option value="14">Lebron James</option>
+                    <option value="15">Scottie Pipen</option>
                 </select>
-                <select id="select-jogador">
+                <select id="select_jogador4">
                     <option value="0">Ala pivô</option>
-                    <option value="anthony-Davis">Anthony Davis</option>
-                    <option value="dirk-Nowitzki">DirK Nowitzki</option>
-                    <option value="giannis-Antetokounmpo">Giannis Antetokounmpo</option>
-                    <option value="kevin-Garnett">Kevin Garnett</option>
-                    <option value="tim-Duncan">Tim Duncan</option>
+                    <option value="16">Anthony Davis</option>
+                    <option value="17">DirK Nowitzki</option>
+                    <option value="18">Giannis Antetokounmpo</option>
+                    <option value="19">Kevin Garnett</option>
+                    <option value="20">Tim Duncan</option>
                 </select>
-                <select id="select-jogador">
+                <select id="select_jogador5">
                     <option value="0">Pivô</option>
-                    <option value="bill-Russell">Bill Russell</option>
-                    <option value="hakeem-Olajuwon">Hakeem Olajuwon</option>
-                    <option value="kareem-abdul-jabbar">Kareem Abdul Jabbar</option>
-                    <option value="shaquille-O'Neal">Shaquille O'Neal</option>
-                    <option value="wilt-Chamberlain">Wilt Chamberlain</option>
+                    <option value="21">Bill Russell</option>
+                    <option value="22">Hakeem Olajuwon</option>
+                    <option value="23">Kareem Abdul Jabbar</option>
+                    <option value="24">Shaquille O'Neal</option>
+                    <option value="25">Wilt Chamberlain</option>
                 </select>
-                <button onclick="votar()">Votar.</button>
+                <button onclick="cadastrarVoto()">Votar.</button>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+
+<script>
+function cadastrarVoto() {
+    //aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var jogador1 = select_jogador1.value
+    var jogador2 = select_jogador2.value
+    var jogador3 = select_jogador3.value
+    var jogador4 = select_jogador4.value
+    var jogador5 = select_jogador5.value
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    if (jogador1 == 0 || jogador2 == 0 || jogador3== 0 || jogador4 == 0 || jogador5 == 0) {
+        alert(`Escolhe um jogador para cada posição.`)
+    }
+
+    else {
+    // Enviando o valor da nova input
+    fetch(`/usuarios/votar/${idUsuario}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            jogador1Server: jogador1,
+            jogador2Server: jogador2,
+            jogador3Server: jogador3,
+            jogador4Server: jogador4,
+            jogador5Server: jogador5
+            
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            setTimeout(() => {
+                window.location = "usuario.html";
+            }, "2000")
+
+            //limparFormulario();
+            //finalizarAguardar();
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        //finalizarAguardar();
+    });
+
+    return false;
+    }
+}
+</script>

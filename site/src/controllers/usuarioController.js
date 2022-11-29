@@ -80,7 +80,7 @@ function cadastrar(req, res) {
     }  else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, time ,senha)
+        usuarioModel.cadastrar(nome, email, senha, time)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -98,9 +98,100 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrarVoto(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var jogador1 = req.body.jogador1Server;
+    var jogador2 = req.body.jogador2Server;
+    var jogador3 = req.body.jogador3Server;
+    var jogador4 = req.body.jogador4Server;
+    var jogador5 = req.body.jogador5Server;
+    var idUsuario = req.params.idUsuario;
+
+    // Faça as validações dos valores
+    if (jogador1 == undefined) {
+        res.status(400).send("Seu jogador está indefinido!");
+    }
+    else if (jogador2 == undefined) {
+        res.status(400).send("Seu ID está indefinido!");
+    }
+    else if (jogador3 == undefined) {
+        res.status(400).send("Seu ID está indefinido!");
+    }
+    else if (jogador4 == undefined) {
+        res.status(400).send("Seu ID está indefinido!");
+    }
+    else if (jogador5 == undefined) {
+        res.status(400).send("Seu ID está indefinido!");
+    }
+    else if (idUsuario == undefined) {
+        res.status(400).send("Seu ID está indefinido!");
+    }
+    else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarVoto(idUsuario, jogador1, jogador2, jogador3, jogador4, jogador5)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar ao cadastrar Voto! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function publicar(req, res) {
+    var descricao = req.body.descricao;
+    var idUsuario = req.params.idUsuario;
+
+    if (descricao == undefined) {
+        res.status(400).send("A descrição está indefinido!");
+    } else if (idUsuario == undefined) {
+        res.status(403).send("O id do usuário está indefinido!");
+    } else {
+        usuarioModel.publicar(idUsuario, descricao)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function exibir(req, res) {
+    usuarioModel.exibir().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    cadastrarVoto,
+    publicar,
+    exibir
 }

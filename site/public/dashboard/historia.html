@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vem pro racha!</title>
+
+    <link rel="icon" href="../assets/logoOficial.png">
+    <link rel="stylesheet" href="../css/usuario.css">
+    <script src="../js/funcoes.js"></script>
+</head>
+
+<body onload="exibir()">
+    <div class="header">
+        <div class="user-header">
+            <h1>Salve, usuário</h1>
+            <div class="secao1">
+                <h3>Quadras</h3>
+                <a href="./quadras.html">
+                    <div class="btn-nav1" onclick>
+                    </div>
+                </a>
+            </div>
+            <div class="secao2">
+
+                <h3>Meu top 5</h3>
+                <a href="./votacao.html">
+                    <div class="btn-nav2">
+                    </div>
+                </a>
+            </div>
+            <div class="secao3">
+                <h3>Ranking da comunidade</h3>
+                <a href="./ranking.html">
+                    <div class="btn-nav3">
+                    </div>
+                </a>
+            </div>
+            <div class="secao4">
+                <h3>Minha história</h3>
+                <a href="./historia.html">
+                    <div class="btn-nav4">
+                    </div>
+                </a>
+            </div>
+            <div class="secao5">
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h2>Sair</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="postagem" method="post" onsubmit="return publicar()">
+        <!--id form_postagem-->
+        <label>
+            Título:
+            <br>
+            <input name="titulo" id="titulo" maxlength="100" type="text" placeholder="Insira aqui seu título!">
+        </label>
+        <br>
+        <label>
+            <textarea name="comentario" id="textoComentario" maxlength="200" rows="5"
+                placeholder="Insira aqui seu comentário!"></textarea>
+            <!--name descricao id textarea_descricao-->
+        </label>
+        <br>
+        <button>Enviar</button>
+    </form>
+
+    <!-- <div class="main">
+        <div class="main-secao">
+            <div class="container">
+                <form id="postagem" method="post">
+                    <!--id form_postagem-->
+                    <!-- <textarea name="historia" id="textoHistoria" maxlength="400"
+                        placeholder="Insira aqui seu comentário!"></textarea> -->
+                    <!--name descricao id textarea_descricao-->
+                <!-- </form>
+                <button onclick="publicar()">
+                    <h4>Enviar</h4>
+                </button>
+            </div>
+            <div id="container">
+                <>
+            </>
+        </div>
+    </div> -->
+    
+</body>
+
+</html>
+<script>
+    function publicar() {
+        container.style.display = "flex"
+        // var texto = text.value;
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            descricao: postagem.textoComentario.value //VERIFICAR SE ESTA CORRETO
+        }
+
+        fetch(`/usuarios/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                // window.location = "/dashboard/mural.html";
+
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+
+    }
+
+    function exibir() {
+        //aguardar();
+        fetch("/usuarios/exibir").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("container_text");
+
+                    var publicacao = resposta;
+                    feed.innerHTML = publicacao.descricao;
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+</script>
