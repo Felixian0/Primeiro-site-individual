@@ -53,32 +53,32 @@
         </div>
     </div>
 
-    <form id="postagem" method="post" onsubmit="return publicar()">
-        <!--id form_postagem-->
-        <label>
-            Título:
-            <br>
-            <input name="titulo" id="titulo" maxlength="100" type="text" placeholder="Insira aqui seu título!">
-        </label>
-        <br>
-        <label>
-            <textarea name="comentario" id="textoComentario" maxlength="200" rows="5"
-                placeholder="Insira aqui seu comentário!"></textarea>
-            <!--name descricao id textarea_descricao-->
-        </label>
-        <br>
-        <button>Enviar</button>
-    </form>
+    <div class="main" id="main_nao_tem_historia">
+        <div class=" main-secao">
+        <div class="container">
+            <form id="postagem" method="post">
+                <!--id form_postagem-->
+                <label>
+                    <textarea name="comentario" id="textoComentario" maxlength="400"
+                        placeholder="Insira aqui seu comentário!"></textarea>
+                    <!--name descricao id textarea_descricao-->
+                </label>
+                <br>
+                <button onclick="publicar()">Enviar</button>
+            </form>
+        </div>
+    </div>
+    </div>
 
     <!-- <div class="main">
         <div class="main-secao">
             <div class="container">
                 <form id="postagem" method="post">
                     <!--id form_postagem-->
-                    <!-- <textarea name="historia" id="textoHistoria" maxlength="400"
+    <!-- <textarea name="historia" id="textoHistoria" maxlength="400"
                         placeholder="Insira aqui seu comentário!"></textarea> -->
-                    <!--name descricao id textarea_descricao-->
-                <!-- </form>
+    <!--name descricao id textarea_descricao-->
+    <!-- </form>
                 <button onclick="publicar()">
                     <h4>Enviar</h4>
                 </button>
@@ -88,7 +88,7 @@
             </>
         </div>
     </div> -->
-    
+
 </body>
 
 </html>
@@ -114,7 +114,7 @@
 
             if (resposta.ok) {
                 window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                // window.location = "/dashboard/mural.html";
+                window.location = "./historia.html";
 
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
@@ -130,8 +130,9 @@
     }
 
     function exibir() {
+        var idUsuario = sessionStorage.ID_USUARIO;
         //aguardar();
-        fetch("/usuarios/exibir").then(function (resposta) {
+        fetch(`/usuarios/exibir/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     throw "Nenhum resultado encontrado!!";
@@ -140,10 +141,30 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                    var feed = document.getElementById("container_text");
+                    var feed = document.getElementsByClassName("container");
 
                     var publicacao = resposta;
                     feed.innerHTML = publicacao.descricao;
+                    if (idUsuario == publicacao.fkUsuario) {
+                        alert('Ja tem historia')
+                    } else {
+                        main_nao_tem_historia.innerHTML = `
+                        <div class=" main-secao">
+        <div class="container">
+            <form id="postagem" method="post">
+                <!--id form_postagem-->
+                <label>
+                    <textarea name="comentario" id="textoComentario" maxlength="400"
+                        placeholder="Insira aqui seu comentário!"></textarea>
+                    <!--name descricao id textarea_descricao-->
+                </label>
+                <br>
+                <button onclick="publicar()">Enviar</button>
+            </form>
+        </div>
+    </div>
+                        `
+                    }
 
                 });
             } else {

@@ -24,7 +24,7 @@ router.post("/votar/:idUsuario", function (req, res) {
     usuarioController.cadastrarVoto(req, res);
 })
 
-router.get("/exibir", function (req, res) {
+router.get("/exibir/:idUsuario", function (req, res) {
     usuarioController.exibir(req, res);
 });
 
